@@ -55,7 +55,7 @@
      state: present
 
   - name: get the categories count
-    ansible.builtin.command:  mongo --host mongodb.kranthi.bond --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
+    ansible.builtin.command:  mongosh --host mongodb.kranthi.bond --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
     register: product_count
 
   - name: printing the count
@@ -63,5 +63,5 @@
       msg: "product count: {{product_count}}"
 
   - name: load cataloge data
-    ansible.builtin.command: mongo --host mongodb.kranthi.bond < /app/schema/catalogue.js
+    ansible.builtin.command: mongosh --host mongodb.kranthi.bond < /app/schema/catalogue.js
       
