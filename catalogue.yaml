@@ -21,7 +21,8 @@
       url: curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
       dest: /tmp/app
 
-  - name: unaarchive files
+  - name: unarchive files
+    ansible.builtin.unarchive:
     src: /tmp/catalogue.zip
     dest: /tmp/app
 
