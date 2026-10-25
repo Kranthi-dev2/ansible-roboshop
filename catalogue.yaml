@@ -24,12 +24,12 @@
   - name: unarchive files
     ansible.builtin.unarchive:
       src: /tmp/catalogue.zip
-      dest: /tmp/app
+      dest: /app
 
   - name: npm install
     ansible.builtin.command:
       cmd: npm install
-      chdir: /tmp/app
+      chdir: /app
 
   - name: copy service files
     ansible.builtin.copy:
