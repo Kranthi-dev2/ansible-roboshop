@@ -15,3 +15,29 @@
     ansible.builtin.file:
       path: /tmp/app
       state: directory
+
+  - name: downloading urls
+    ansible.builtin.get_url:
+      url: curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+      dest: /tmp/app
+
+  - name: unaarchive files
+    src: /tmp/catalogue.zip
+    dest: /tmp/app
+
+  - name: npm install
+    ansible.builtin.command:
+      cmd: npm install
+      chdir: /tmp/app
+
+  - name: copy service files
+    ansible.builtin.copy:
+    src: catalogue.service
+    dest: /etc/systemd/system/catalogue.service
+
+  - name: daemon reload
+    ansible.builtin.systemd_service:
+      state: reloaded
+      enabled: true
+      state: started
+      
