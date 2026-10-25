@@ -25,6 +25,7 @@
     ansible.builtin.unarchive:
       src: /tmp/catalogue.zip
       dest: /app
+      remote_src: yes  # no need search the file in somewhere location, it's already downloaded to local
 
   - name: npm install
     ansible.builtin.command:
