@@ -23,8 +23,8 @@
 
   - name: unarchive files
     ansible.builtin.unarchive:
-    src: /tmp/catalogue.zip
-    dest: /tmp/app
+      src: /tmp/catalogue.zip
+      dest: /tmp/app
 
   - name: npm install
     ansible.builtin.command:
